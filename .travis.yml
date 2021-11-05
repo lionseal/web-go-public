@@ -1,0 +1,14 @@
+language: shell
+stage:
+  - name: build
+    if: branch != main
+  - name: deploy
+    if: branch = main
+jobs:
+  include:
+    - stage: build
+      script: 
+        - docker build .
+    - stage: deploy
+      script: 
+        - docker build .
